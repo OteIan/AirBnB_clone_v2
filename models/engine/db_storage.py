@@ -11,6 +11,7 @@ from models.amenity import Amenity
 from models.review import Review
 from sqlalchemy.orm import sessionmaker, scoped_session
 
+
 class DBStorage:
 	"""Database storage"""
 	__engine = None
@@ -52,19 +53,18 @@ class DBStorage:
 					key = "{}.{}".format(type(obj).__name__, obj.id)
 					objects[key] = obj
 
-
 		return objects
 
 	def new(self, obj):
-		""""""
+		"""Creates a new object"""
 		self.__session.add(obj)
 
 	def save(self):
-		""""""
+		"""Saves an object"""
 		self.__session.commit()
 
 	def delete(self, obj=None):
-		""""""
+		"""Deletes an object"""
 		if obj != None:
 			self.__session.delete(obj)
 
