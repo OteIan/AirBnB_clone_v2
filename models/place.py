@@ -25,28 +25,28 @@ class Place(BaseModel, Base):
     latitude = Column(Float, nullable=True)
     longitude = Column(Float, nullable=True)
 
-    user = relationship('User', back_populates='places')
-    city = relationship('City', back_populates='places')
+    # user = relationship('User', back_populates='places')
+    # city = relationship('City', back_populates='places')
 
-    # For DBStorage
-    reviews = relationship('Review', cascade='all, delete-orphan', back_populates='place')
-    amenities = relationship('Amenity', secondary=place_amenity, viewonly=False)
+    # # For DBStorage
+    # # reviews = relationship('Review', cascade='all, delete-orphan', back_populates='place')
+    # amenities = relationship('Amenity', secondary=place_amenity, viewonly=False)
 
-    # For FileStorage
-    @property
-    def amenities(self):
-        """Getter attribute for amenities"""
-        from models import storage
-        amenity_list = []
-        for amenity_id in self.amenity_ids:
-            amenity = storage.get(Amenity, amenity_id)
-            if amenity:
-                amenity_list.append(amenity)
-        return amenity_list
+    # # For FileStorage
+    # @property
+    # def amenities(self):
+    #     """Getter attribute for amenities"""
+    #     from models import storage
+    #     amenity_list = []
+    #     for amenity_id in self.amenity_ids:
+    #         amenity = storage.get(Amenity, amenity_id)
+    #         if amenity:
+    #             amenity_list.append(amenity)
+    #     return amenity_list
 
-    @amenities.setter
-    def amenities(self, obj):
-        """Setter attribute for amenities"""
-        if isinstance(obj, Amenity):
-            self.amenity_ids.append(obj.id)
+    # @amenities.setter
+    # def amenities(self, obj):
+    #     """Setter attribute for amenities"""
+    #     if isinstance(obj, Amenity):
+    #         self.amenity_ids.append(obj.id)
 
