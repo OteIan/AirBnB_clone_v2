@@ -50,5 +50,3 @@ class Place(BaseModel, Base):
         if isinstance(obj, Amenity):
             self.amenity_ids.append(obj.id)
 
-    # Additional attribute for FileStorage
-    amenity_ids = []
