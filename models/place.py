@@ -52,21 +52,14 @@ class Place(BaseModel, Base):
 					reviews.append(obj)
 			return reviews
 
+		amenity_ids = []
 		@property
 		def amenities(self):
-			"""Getter attribute for amenities"""
-			from models import storage
-			amenity_list = []
-			for amenity_id in self.amenity_ids:
-				amenity = storage.get(Amenity, amenity_id)
-				if amenity:
-					amenity_list.append(amenity)
-			return amenity_list
+			""" Returns list of amenity ids """
+			return self.amenity_ids
 
 		@amenities.setter
-		def amenities(self, obj):
-			"""Setter attribute for amenities"""
-			if isinstance(obj, Amenity):
+		def amenities(self, obj=None):
+			""" Appends amenity ids to the attribute """
+			if type(obj) is Amenity and obj.id not in self.amenity_ids:
 				self.amenity_ids.append(obj.id)
-
-		amenity_ids = []
