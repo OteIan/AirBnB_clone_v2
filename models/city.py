@@ -8,5 +8,5 @@ from models.state import State
 class City(BaseModel):
     """ The city class, contains state ID and name """
     __tablename__ = "cities"
-    state_id = Column(String(60), nullable=False, ForeignKey('State.id'))
+    state_id = Column(String(60), ForeignKey('states.id'), nullable=False)
     name = Column(String(128), nullable=False)
