@@ -2,7 +2,7 @@
 """New storage"""
 import os
 from models.base_model import Base
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, create_all
 from sqlalchemy.orm import sessionmaker, scoped_session
 
 class DBStorage:
@@ -19,13 +19,14 @@ class DBStorage:
 				os.getenv('HBNB_MYSQL_HOST'),
 				os.getenv('HBNB_MYSQL_DB'),
 				pool_pre_ping=True
-			)
+		        )
 		)
 		if os.getenv('HBNB_ENV') == 'test':
 			Base.metadata.drop_all(self.__engine)
 		
 		self.__session = scoped_session(sessionmaker(bind=self.__engine,
-                                                     expire_on_commit=False))
+                    expire_on_commit=False))
+                Base.metadata.create_all(self.__engine)
 
 	def all(self, cls=None):
 		""""Query on the current database session all 
