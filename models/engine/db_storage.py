@@ -2,7 +2,7 @@
 """New storage"""
 import os
 from models.base_model import Base
-from sqlalchemy import create_engine, create_all
+from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, scoped_session
 
 class DBStorage:
@@ -26,7 +26,6 @@ class DBStorage:
 		
 		self.__session = scoped_session(sessionmaker(bind=self.__engine,
 					expire_on_commit=False))
-		Base.metadata.create_all(self.__engine)
 
 	def all(self, cls=None):
 		""""Query on the current database session all 
@@ -64,7 +63,7 @@ class DBStorage:
 
 	def reload(self):
 		""""""
-		Base.metadata.create_all(self.__engine)  # Create all tables
+		Base.metadata.create_all(self.__engine)
 		sec = sessionmaker(bind=self.__engine, expire_on_commit=False)
 		Session = scoped_session(sec)
 		self.__session = Session()
