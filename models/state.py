@@ -16,8 +16,8 @@ class State(BaseModel, Base):
 	def cities(self):
 		"""Returns a list of City instances"""
 		from models.__init__ import storage
-		cities = []
+		cts = []
 		for obj in storage.all(City).values():
 			if obj.state_id == self.id:
-				cities.append(obj)
-		return cities
+				cts.append(obj)
+		return cts
