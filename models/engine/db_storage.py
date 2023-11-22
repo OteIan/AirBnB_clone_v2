@@ -19,14 +19,14 @@ class DBStorage:
 				os.getenv('HBNB_MYSQL_HOST'),
 				os.getenv('HBNB_MYSQL_DB'),
 				pool_pre_ping=True
-		        )
+				)
 		)
 		if os.getenv('HBNB_ENV') == 'test':
 			Base.metadata.drop_all(self.__engine)
 		
 		self.__session = scoped_session(sessionmaker(bind=self.__engine,
-                    expire_on_commit=False))
-                Base.metadata.create_all(self.__engine)
+					expire_on_commit=False))
+		Base.metadata.create_all(self.__engine)
 
 	def all(self, cls=None):
 		""""Query on the current database session all 
@@ -48,11 +48,11 @@ class DBStorage:
 				objects[key] = obj
 
 		return objects
-	
+
 	def new(self, obj):
 		""""""
 		self.__session.add(obj)
-	
+
 	def save(self):
 		""""""
 		self.__session.commit()
@@ -66,5 +66,5 @@ class DBStorage:
 		""""""
 		Base.metadata.create_all(self.__engine)
 		self.__session = scoped_session(sessionmaker(bind=self.__engine,
-                                                     expire_on_commit=False))
+														expire_on_commit=False))
 
