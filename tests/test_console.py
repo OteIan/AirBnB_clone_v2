@@ -24,8 +24,8 @@ class TestConsoleCreateCommand(unittest.TestCase):
 
     def test_create_with_string_parameter(self):
         """Test create command with string parameter"""
-        output = self.capture_output('create BaseModel name="My_little_house"\n')
-        self.assertIn("My little house", output)
+        out = self.capture_output('create BaseModel name="My_little_house"\n')
+        self.assertIn("My little house", out)
 
     def test_create_with_float_parameter(self):
         """Test create command with float parameter"""
