@@ -139,7 +139,3 @@ class TestFileStorage(unittest.TestCase):
         self.assertNotIn(f'User.{User.id}', storage.all())
         
     def test_create_method_with_invalid_parameters
-
-
-if __name__ == '__main__':
-    unittest.main()

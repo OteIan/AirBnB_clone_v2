@@ -41,7 +41,3 @@ class TestConsoleCreateCommand(unittest.TestCase):
         """Test create command with invalid parameter"""
         output = self.capture_output('create BaseModel invalid_param=abc\n')
         self.assertIn("Invalid parameter", output)
-
-
-if __name__ == '__main__':
-    unittest.main()
