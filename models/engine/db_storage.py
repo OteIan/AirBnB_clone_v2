@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/usr/bin/python3
 """New storage"""
 import os
 from models.base_model import Base
