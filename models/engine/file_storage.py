@@ -26,8 +26,8 @@ class FileStorage:
         """
         Serialize and save all instances to the JSON file.
         """
-        objects_dict = \
-                {key: obj.to_dict() for key, obj in self.__objects.items()}
+        objects_dict = {key: obj.to_dict() for key, obj in
+                        self.__objects.items()}
         with open(self.__file_path, 'w') as file:
             json.dump(objects_dict, file)
 
