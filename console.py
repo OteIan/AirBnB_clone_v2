@@ -112,7 +112,7 @@ class HBNBCommand(cmd.Cmd):
     def emptyline(self):
         """ Overrides the emptyline method of CMD """
         pass
-    
+
     def do_create(self, args):
         """ Create an object of any class"""
         try:
@@ -226,7 +226,6 @@ class HBNBCommand(cmd.Cmd):
 
         print(print_list)
 
-
     def help_all(self):
         """ Help information for the all command """
         print("Shows all objects, or all of a class")
@@ -277,11 +276,11 @@ class HBNBCommand(cmd.Cmd):
 
         # first determine if kwargs or args
         if '{' in args[2] and '}' in args[2] and type(eval(args[2])) is dict:
-                kwargs = eval(args[2])
+            kwargs = eval(args[2])
             args = []  # reformat kwargs into list, ex: [<name>, <value>, ...]
             for k, v in kwargs.items():
-                    args.append(k)
-                    args.append(v)
+                args.append(k)
+                args.append(v)
         else:  # isolate args
             args = args[2]
             if args and args[0] == '\"':  # check for quoted arg
