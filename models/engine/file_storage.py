@@ -20,16 +20,16 @@ class FileStorage:
 
     def new(self, obj):
         """Adds new object to storage dictionary"""
-            self.all().update({obj.to_dict()['__class__'] + '.' + obj.id: obj})
+        self.all().update({obj.to_dict()['__class__'] + '.' + obj.id: obj})
 
     def save(self):
         """
-            Serialize and save all instances to the JSON file.
-            """
-            objects_dict = \
-                    {key: obj.to_dict() for key, obj in self.__objects.items()}
-            with open(self.__file_path, 'w') as file:
-                json.dump(objects_dict, file)
+        Serialize and save all instances to the JSON file.
+        """
+        objects_dict = \
+                {key: obj.to_dict() for key, obj in self.__objects.items()}
+        with open(self.__file_path, 'w') as file:
+            json.dump(objects_dict, file)
 
     def delete(self, obj=None):
         """
@@ -62,4 +62,4 @@ class FileStorage:
                 for key, val in temp.items():
                     self.all()[key] = classes[val['__class__']](**val)
         except FileNotFoundError:
-                pass
+            pass
