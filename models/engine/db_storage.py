@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/bash
 """New storage"""
 import os
 from models.base_model import Base
@@ -40,7 +40,7 @@ class DBStorage:
                 objects depending on class name"""
                 objects = {}
                 if cls:
-                    if type(cls) is str:
+                    if type(cls) == str:
                         cls = eval(cls)
                     query = self.__session.query(cls)
                     for obj in query:
