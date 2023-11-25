@@ -46,7 +46,7 @@ class HBNBCommand(cmd.Cmd):
 
         # scan for general formating - i.e '.', '(', ')'
         if not ('.' in line and '(' in line and ')' in line):
-                return line
+            return line
         try:  # parse line left to right
             pline = line[:]  # parsed line
 
@@ -72,19 +72,19 @@ class HBNBCommand(cmd.Cmd):
                 # if arguments exist beyond _id
                 pline = pline[2].strip()  # pline is now str
                 if pline:
-                        # check for *args or **kwargs
-                        if pline[0] == '{' and pline[-1] =='}'\
+                    # check for *args or **kwargs
+                    if pline[0] == '{' and pline[-1] == '}'\
                                 and type(eval(pline)) is dict:
-                                _args = pline
-                        else:
-                                _args = pline.replace(',', '')
-                                # _args = _args.replace('\"', '')
+                        _args = pline
+                    else:
+                        _args = pline.replace(',', '')
+                        # _args = _args.replace('\"', '')
                 line = ' '.join([_cmd, _cls, _id, _args])
 
         except Exception as mess:
-                pass
+            pass
         finally:
-                return line
+            return line
 
     def postcmd(self, stop, line):
             """Prints if isatty is false"""
