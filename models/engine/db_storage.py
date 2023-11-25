@@ -33,10 +33,10 @@ class DBStorage:
             Base.metadata.drop_all(self.__engine)
 
             self.__session = scoped_session(sessionmaker(bind=self.__engine,
-                expire_on_commit=False))
+                                            expire_on_commit=False))
 
             def all(self, cls=None):
-                """"Query on the current database session all 
+                """"Query on the current database session all
                 objects depending on class name"""
                 objects = {}
                 if cls:

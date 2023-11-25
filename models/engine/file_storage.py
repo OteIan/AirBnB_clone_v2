@@ -12,10 +12,10 @@ class FileStorage:
         """Returns a dictionary of classes currently in storage"""
         if cls is not None:
             dictionary = {}
-                for key, obj in FileStorage.__objects.items():
-                    if isinstance(obj, cls):
-                        dictionary[key] = obj
-                return dictionary
+            for key, obj in FileStorage.__objects.items():
+                if isinstance(obj, cls):
+                    dictionary[key] = obj
+            return dictionary
         return FileStorage.__objects
 
     def new(self, obj):
