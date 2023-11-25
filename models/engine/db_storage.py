@@ -40,7 +40,7 @@ class DBStorage:
                 objects depending on class name"""
                 objects = {}
                 if cls:
-                    if type(cls) == str:
+                    if isinstance(cls, str):
                         cls = eval(cls)
                     query = self.__session.query(cls)
                     for obj in query:
