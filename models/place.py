@@ -35,11 +35,11 @@ class Place(BaseModel, Base):
     latitude = Column(Float, nullable=True)
     longitude = Column(Float, nullable=True)
     reviews = relationship('Review', cascade='all, delete-orphan',
-                           backref='place')
+                           back_populates='place')
     amenities = relationship('Amenity',
                              secondary='place_amenity',
                              viewonly=False,
-                             backref='places'
+                             back_populates='places'
                              )
 
     if getenv('HBNB_TYPE_STORAGE') == 'FileStorage':
