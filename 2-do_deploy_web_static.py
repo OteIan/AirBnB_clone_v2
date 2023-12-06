@@ -4,9 +4,7 @@ from os.path import exists
 """Fabric script that distributes an archive to the web servers"""
 
 
-env.hosts = ["ubuntu@3.84.158.65", "ubuntu@3.90.85.11"]
-env.user = "ubuntu"
-env.private_key_filename = "~/.ssh/school"
+env.hosts = ["3.84.158.65", "3.90.85.11"]
 
 def do_deploy(archive_path):
 	"""Distributes an archive to the web servers"""
