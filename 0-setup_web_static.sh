@@ -20,7 +20,10 @@ sudo ln -sf /data/web_static/releases/test/ /data/web_static/current
 printf '%s\n' "server {
 	listen 80 default_server;
 	listen [::]:80 default_server;
-	
+
+	# Add a custom header
+	add_header X-Served-By \$hostname;
+
 	root /var/www/html;
 	index index.html index.htm index.nginx-debian.html;
 	
