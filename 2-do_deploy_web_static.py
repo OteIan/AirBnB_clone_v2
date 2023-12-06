@@ -1,16 +1,15 @@
 #!/usr/bin/python3
+from fabric.api import put, run, env
+from os.path import exists
 """Fabric script that distributes an archive to the web servers"""
 
 
+env.hosts = ["ubuntu@3.84.158.65", "ubuntu@3.90.85.11"]
+env.user = "ubuntu"
+env.private_key_filename = "~/.ssh/school"
+
 def do_deploy(archive_path):
 	"""Distributes an archive to the web servers"""
-	from fabric.api import put, run, env
-	from os.path import exists
-
-	env.hosts = ["ubuntu@3.84.158.65", "ubuntu@3.90.85.11"]
-	env.user = "ubuntu"
-	env.private_key_filename = "~/.ssh/school"
-
 	if not exists(archive_path):
 		return False
 	
@@ -25,10 +24,16 @@ def do_deploy(archive_path):
 		run('tar -xzf /tmp/{} -C {}'.format(filename, release_path))
 		
 		# Delete the archive from the web server
-		run('rm /tmp/{}'.format(archive_path))
+		run('rm -f /tmp/{}'.format(archive_path))
+
+		# Move the content of web_static/releases/<archive filename without extension> to
+		run('mv {}/web_static/* {}'.format(release_path, release_path))
+
+		# Delete the folder web_static from the web server
+		run('rm -rf {}/web_static'.format(release_path))
 
 		# Delete the symbolic link /data/web_static/current from the web server
-		run('rm -f /data/web_static/current')
+		run('rm -rf /data/web_static/current')
 
 		# Create a new the symbolic link /data/web_static/current on the web server
 		run('ln -s {} /data/web_static/current'.format(release_path))
