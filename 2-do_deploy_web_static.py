@@ -6,7 +6,8 @@ def do_deploy(archive_path):
 	"""Distributes an archive to the web servers"""
 	from fabric.api import put, run, env
 	from os.path import exists
-	env.hosts = ["3.84.158.65 335371-web-01", "3.90.85.11 335371-web-02"]
+
+	env.hosts = ["ubuntu@3.84.158.65", "ubuntu@3.90.85.11"]
 	env.user = "ubuntu"
 	env.private_key_filename = "~/.ssh/school"
 
