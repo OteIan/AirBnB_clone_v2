@@ -23,6 +23,12 @@ def do_pack():
 		# Compress the files from web_static
 		local(f"tar -cvzf versions/{archive_name} web_static")
 
+		# Get the size of the created archive
+		archive_size = path.getsize("versions/{}".format(archive_name))
+
+        # Print a message with the packed file and its size
+		print("web_static packed: versions/{} -> {}Bytes".format(archive_name, archive_size))
+
 		return "versions/{}".format(archive_name)
 	except Exception as e:
 		print(e)
