@@ -23,7 +23,7 @@ def do_pack():
 		# Compress the files from web_static
 		local(f"tar -cvzf versions/{archive_name} web_static")
 
-		return f"versions/{archive_name}"
+		return "versions/{}".format(archive_name)
 	except Exception as e:
 		print(e)
 		return None
