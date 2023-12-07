@@ -12,13 +12,7 @@ sudo chown -R ubuntu /data/
 sudo chgrp -R ubuntu /data/
 
 # Create a fake file to test
-echo "<html>
-  <head>
-  </head>
-  <body>
-    Holberton School
-  </body>
-</html>" >  /data/web_static/releases/test/index.html
+echo "Holberton School" >  /data/web_static/releases/test/index.html
 
 # Create a symlink 
 sudo ln -sf /data/web_static/releases/test/ /data/web_static/current
