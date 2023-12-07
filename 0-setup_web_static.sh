@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 # Prepare my servers for the deployement process
+
 # Install nginx if not installed
 sudo apt-get update
 sudo apt-get -y  install nginx
