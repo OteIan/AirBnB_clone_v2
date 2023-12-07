@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 # Prepare my servers for the deployement process
+
 # Install nginx if not installed
 sudo apt-get update
 sudo apt-get -y  install nginx
@@ -11,7 +12,7 @@ sudo chown -R ubuntu /data/
 sudo chgrp -R ubuntu /data/
 
 # Create a fake file to test
-echo "Hello this is working" >  /data/web_static/releases/test/index.html
+echo "Holberton School" >  /data/web_static/releases/test/index.html
 
 # Create a symlink 
 sudo ln -sf /data/web_static/releases/test/ /data/web_static/current
