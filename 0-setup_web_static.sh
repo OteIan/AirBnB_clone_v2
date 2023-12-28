@@ -6,12 +6,12 @@ sudo apt install -y nginx
 
 sudo mkdir -p /data/web_static/releases/test/
 sudo mkdir -p /data/web_static/shared/
-sudo chown -R ubuntu /data/
-sudo chgrp -R ubuntu /data/
+sudo ln -sf /data/web_static/releases/test/ /data/web_static/current
 
 echo "Hello There!" > /data/web_static/releases/test/index.html
 
-sudo ln -sf /data/web_static/releases/test/ /data/web_static/current
+sudo chown -R ubuntu /data/
+sudo chgrp -R ubuntu /data/
 
 printf '%s\n' "server {
 	listen 80 default_server;
