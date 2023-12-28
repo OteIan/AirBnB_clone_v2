@@ -19,7 +19,9 @@ def do_pack():
 
         archive_size = path.getsize(f"versions/{archive_name}")
 
-        print(f"web_static packed: versions/{archive_name} -> {archive_size}Bytes")
+        a, b = archive_name, archive_size
+
+        print(f"web_static packed: versions/{a} -> {b}Bytes")
 
         return (f"versions/{archive_name}")
 
