@@ -3,3 +3,4 @@
 **/__pycache__/
 /Checks/
 flask_install
+versions/
