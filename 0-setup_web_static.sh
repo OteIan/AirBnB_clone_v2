@@ -6,8 +6,8 @@ sudo apt install -y nginx
 
 sudo mkdir -p /data/web_static/releases/test/
 sudo mkdir -p /data/web_static/shared/
-chown -R ubuntu /data/
-chgrp -R ubuntu /data/
+sudo chown -R ubuntu /data/
+sudo chgrp -R ubuntu /data/
 
 echo "Hello There!" > /data/web_static/releases/test/index.html
 
@@ -32,9 +32,9 @@ printf '%s\n' "server {
 		internal;
 	}
 
-    location /hbnb_static {
-        alias /data/web_static/current/
-    }
+    	location /hbnb_static {
+        	alias /data/web_static/current/;
+    	}
 }" | sudo tee /etc/nginx/sites-available/default > /dev/null
 
 sudo service nginx restart
