@@ -1,3 +1,5 @@
-# .gitignore
+.gitignore
 .venv/
 **/__pycache__/
+/Checks/
+flask_install
