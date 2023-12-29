@@ -49,7 +49,7 @@ def do_deploy(archive_path):
         run(f"tar -xzf /tmp/{archive_name} -C {destination}")
 
         # Delete the archive from the web server
-        run(f"rm -rf {archive_name}")
+        run(f"rm -rf /tmp/{archive_path}")
         run(f"mv {destination}/web_static/* {destination}")
 
         # Delete the web_static folder from the web_server
