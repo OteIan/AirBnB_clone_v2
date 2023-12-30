@@ -7,11 +7,11 @@ This is a simple Flask web application that defines the following routes:
 2. '/hbnb' - Returns "HBNB".
 3. '/c/<text>': display "C" followed by the value of the text variable
 4. '/python/<text>' - Displays "Python" followed by the value of the 'text'
-\tvariable.Defaults to "is cool"
+\t\t\tvariable.Defaults to "is cool"
 5. '/number/<int:n>' - Displays the provided integer 'n' with a message
-\t'is an integer'
+\t\t\t'is an integer'
 6. '/number_template/<int:n>' - Renders an HTML template displaying the
-\tprovided integer 'n'
+\t\t\tprovided integer 'n'
 """
 from flask import Flask, render_template
 from markupsafe import escape  # Prevents HTML injections
