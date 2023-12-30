@@ -8,7 +8,7 @@ This is a simple Flask web application that defines the following routes:
 3. '/c/<text>': display "C" followed by the value of the text variable
 """
 from flask import Flask
-from markupsafe import escape # Prevents HTML injections
+from markupsafe import escape  # Prevents HTML injections
 app = Flask(__name__)
 
 
