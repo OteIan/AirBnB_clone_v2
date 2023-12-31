@@ -14,13 +14,12 @@ class State(BaseModel, Base):
     cities = relationship('City', cascade='all, delete-orphan',
                           backref="state")
 
-    if getenv("HBNB_TYPE_STORAGE") != "db":
-        @property
-        def cities(self):
-            """Returns a list of City instances"""
-            from models.__init__ import storage
-            cities = []
-            for obj in storage.all(City).values():
-                if obj.state_id == self.id:
-                    cities.append(obj)
-            return cities
+    @property
+    def cities(self):
+        """Returns a list of City instances"""
+        from models.__init__ import storage
+        cities = []
+        for obj in storage.all(City).values():
+            if obj.state_id == self.id:
+                cities.append(obj)
+        return cities
