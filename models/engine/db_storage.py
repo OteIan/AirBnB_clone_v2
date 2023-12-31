@@ -35,26 +35,26 @@ class DBStorage:
             self.__session = scoped_session(sessionmaker(bind=self.__engine,
                                             expire_on_commit=False))
 
-            def all(self, cls=None):
-                """"Query on the current database session all
-                objects depending on class name"""
-                objects = {}
-                if cls:
-                    if isinstance(cls, str):
-                        cls = eval(cls)
-                    query = self.__session.query(cls)
-                    for obj in query:
-                        key = "{}.{}".format(type(obj).__name__, obj.id)
-                        objects[key] = obj
-                else:
-                    classes = [User, State, City, Amenity, Place, Review]
-                    for element in classes:
-                        query = self.__session.query(element)
-                        for obj in query:
-                            key = "{}.{}".format(type(obj).__name__, obj.id)
-                            objects[key] = obj
+    def all(self, cls=None):
+        """"Query on the current database session all
+        objects depending on class name"""
+        objects = {}
+        if cls:
+            if isinstance(cls, str):
+                cls = eval(cls)
+            query = self.__session.query(cls)
+            for obj in query:
+                key = "{}.{}".format(type(obj).__name__, obj.id)
+                objects[key] = obj
+        else:
+            classes = [User, State, City, Amenity, Place, Review]
+            for element in classes:
+                query = self.__session.query(element)
+                for obj in query:
+                    key = "{}.{}".format(type(obj).__name__, obj.id)
+                    objects[key] = obj
 
-                return objects
+        return objects
 
     def new(self, obj):
         """Creates a new object"""
