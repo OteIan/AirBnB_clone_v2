@@ -18,7 +18,7 @@ class DBStorage:
     __session = None
 
     def __init__(self):
-        """ """
+        """Initialization"""
         self.__engine = create_engine(
                                     'mysql+mysqldb://{}:{}@{}:3306/{}'.
                                     format(
@@ -70,7 +70,7 @@ class DBStorage:
             self.__session.delete(obj)
 
     def reload(self):
-        """ """
+        """Reloads an object """
         Base.metadata.create_all(self.__engine)
         sec = sessionmaker(bind=self.__engine, expire_on_commit=False)
         Session = scoped_session(sec)
