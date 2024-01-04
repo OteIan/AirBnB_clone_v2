@@ -19,21 +19,6 @@ def db_close(exception):
     storage.close()
 
 
-@app.route("/states_list")
-def states_list():
-    """
-    Route: /states_list
-
-    Renders a template displaying a list of states.
-
-    Example:
-    $ curl http://127.0.0.1:5000/states_list
-    Output: HTML page displaying a list of states
-    """
-    data = sorted(storage.all(State).values(), key=lambda state: state.name)
-    return render_template("7-states_list.html", states=data)
-
-
 @app.route("/cities_by_state")
 def cities_by_state():
     """
