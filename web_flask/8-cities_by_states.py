@@ -35,7 +35,7 @@ def states_list():
 
 
 @app.route("/cities_by_state")
-def states_list():
+def cities_by_state():
     """
     Route: /cities_by_state
 
